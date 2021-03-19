@@ -19,13 +19,45 @@ Consider the following schema:
 Notice how a forest can span two states
 '''
 
-
 '''
 (1) create the tables/models, make sure you set the primary and 
     foreign keys. Look at the 'db.txt' file to find out
     what the types of each column should be. I only used either
     an integer and a string
 '''
+class Forest(db.Model):
+	__tablename__ = "forest"
+	forest_no = db.Column(db.Integer, primary_key = True)
+	forest_name = db.Column(db.String)
+	area = db.Column(db.Integer)
+
+	def __init__(self, forest_no, forest_name, area):
+	 self.forest_no = forest_no
+	 self.forest_name = forest_name
+	 self.area = area
+
+class State(db.Model):
+	__tablename__ = "state"
+	state_name = db.Column(db.String(2), primary_key = True)
+	area = db.Column(db.Integer)
+
+	def __init__(self, state_name, area):
+		self.state_name = state_name
+		self.area = area
+
+class Coverage(db.Model):
+	__tablename__ = "coverage"
+	entry_no = db.Column(db.Integer, primary_key = True)
+	forest_no = db.Column(db.Integer, db.ForeignKey("forest.forest.no"))
+	state_name = db.Column(db.String(2), db.ForeignKey("state.stae_name"))
+	area = db.Column(db.Integer)
+
+	def __init__(self, entry_no, forest_no, state_name, area):
+		self.entry_no = entry_no
+		self.forest_no = forest_no
+		self.state_name = state_name
+		self.area = area
+		
 
 '''
 (2) populate the tables you created above, you can find the data for 
@@ -33,6 +65,12 @@ Notice how a forest can span two states
 	is ',' and for the tables it is an empty line ('\n'). Remeber to 
 	drop all any previosuly created tables to avoid nay problems
 '''
+db.drop_all()
+# db.create_all()
+with open('/Users/zstat/Documents/Pitt/Spring2021/WebApps/cs1520_examples/recitation_exercises/db.txt', 'r') as file:
+	forest = True
+	state = False
+
 
 
 '''
