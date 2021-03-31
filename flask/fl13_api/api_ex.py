@@ -15,6 +15,11 @@ def abort_if_todo_doesnt_exist(todo_id):
 		abort(404)
 
 
+@app.route("/")
+def set_app():
+	return render_template("app.html")
+
+
 # RESTful access to the list of todos
 @app.route("/todos", methods=["GET"])
 def list_get():
