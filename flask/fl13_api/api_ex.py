@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
@@ -63,7 +63,7 @@ def single_put(todo_id=None):
 	new_todo = {"task": req_data["task"], "done": False}
 
 	if "done" in req_data and req_data["done"]:
-			new_todo["done"] = True
+		new_todo["done"] = True
 
 	# Report appropriate status code
 	if todo_id in TODOS:
