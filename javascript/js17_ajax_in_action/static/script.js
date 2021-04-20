@@ -5,8 +5,14 @@ function makePost() {
 		console.log("Could not create an XMLHttpRequest instance");
 		return false;
 	}
-			
-	xhr.onreadystatechange = () => logResponse(xhr);
+	
+	//xhr.onreadystatechange = () => logResponse(xhr);
+
+	function nested() {
+		logResponse(xhr);
+	}
+
+	xhr.onreadystatechange = nested;
 	
 	xhr.open("POST", "/new_item");
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

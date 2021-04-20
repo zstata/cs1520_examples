@@ -19,6 +19,7 @@
 			xhr.onreadystatechange = logResponse;
 			xhr.open("GET", url);
 			xhr.send();
+			console.log("Just sent the request");
 		}
 
 		function logResponse() {
