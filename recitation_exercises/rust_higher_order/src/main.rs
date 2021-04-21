@@ -10,6 +10,12 @@ fn main() {
 	//Problem 1
 	// Produce a vector that contains even numbers in the range (1 to 10)
 	// inclusive Hint: use range (1..11) and filter
+	let mut vec = Vec::new();
+	for elem in 1..11 {
+		if elem % 2 == 0{
+			vec.push(elem);
+		}
+	}
 
 
 	//Problem 2
